@@ -44,6 +44,16 @@ local ESPL = {}
 local ESPB = {}
 
 local function ESP()
+	for _, line in pairs(ESPL) do
+		line:Remove()
+	end
+	ESPL = {}
+
+	for _, box in pairs(ESPB) do
+		box:Remove()
+	end
+	ESPB = {}
+	
 	for _, vehicle in ipairs(vehiclesFolder:GetChildren()) do
 		local hull = vehicle:FindFirstChild("Hull")
 		local followHz = hull and hull:FindFirstChild("FollowHz")
