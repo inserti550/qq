@@ -210,7 +210,7 @@ end
 
 for ii, r in ipairs(game:GetService("Workspace"):FindFirstChild("Map"):GetChildren()) do
     for i, a in ipairs(r:GetDescendants()) do
-        if a.Name == "Bush" then
+        if a.Name == "Bush" or a.Name == "BushOptimized" then
             a:Destroy()
         end
     end
