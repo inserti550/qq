@@ -207,7 +207,7 @@ local function ESP()
 		end
 	end
 end
-print("Удалить куст")
+
 for ii, r in ipairs(game:GetService("Workspace"):FindFirstChild("Map"):GetChildren()) do
     for i, a in ipairs(r:GetDescendants()) do
         if a.Name == "Bush" or a.Name == "BushOptimized" then
@@ -215,35 +215,7 @@ for ii, r in ipairs(game:GetService("Workspace"):FindFirstChild("Map"):GetChildr
         end
     end
 end
-print("1")
-local distance = Drawing.new("Text")
-distance.Visible = false
-distance.Center = true
-distance.Outline = true
-distance.Size = 18
-distance.Color = Color3.fromRGB(255, 255, 255)
-distance.Position = Vector2.new((workspace.CurrentCamera.ViewportSize.X / 2) + 45, (workspace.CurrentCamera.ViewportSize.Y / 2) - 65)
-local igray = {}
-print("2")
+
 RunService.RenderStepped:Connect(function()
     ESP()
-    print("3")
-    local orig = camera.CFrame.Position + camera.CFrame.LookVector * 2
-    local dir = camera.CFrame.LookVector * 99990
-    print("4")
-    local param = RaycastParams.new()
-    param.FilterType = Enum.RaycastFilterType.Blacklist
-    param.FilterDescendantsInstances = igray
-    print("5")
-    local result = workspace:Raycast(orig, dir, param)
-    distance.Visible = true
-    if(result == nil) then
-        distance.Text = "Бобметр: --- m"
-    else
-        distance.Text = "Бобметр: " .. math.floor(((orig - result.Position).Magnitude) * 0.28) .. " m"
-    end
-    print("6")
-    igray = {}
-    distance.Position = Vector2.new((workspace.CurrentCamera.ViewportSize.X / 2) + 45, (workspace.CurrentCamera.ViewportSize.y / 2) - 65)
-    print("7")
 end)
